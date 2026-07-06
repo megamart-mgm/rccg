@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Prayer Request — RCCG Winners Assembly Malmö</title>
+<meta name="theme-color" content="#161550">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&family=Tangerine:wght@700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { navy: { DEFAULT: '#161550', deep: '#0d0c33', light: '#232170' }, gold: { DEFAULT: '#cf9d33', light: '#f2d488', dark: '#96721f' }, crimson: { DEFAULT: '#a91d2c' }, emerald: { DEFAULT: '#12703f' }, cream: '#faf7ef' },
+    fontFamily: { display: ['"Cormorant Garamond"', 'serif'], script: ['"Tangerine"', 'cursive'], body: ['"Manrope"', 'sans-serif'] }
+  } } }
+</script>
+<style>
+  body { font-family:'Manrope', sans-serif; background:#faf7ef; overflow-x:hidden; }
+  .font-display { font-family:'Cormorant Garamond', serif; }
+  .font-script { font-family:'Tangerine', cursive; }
+  .nav-link { position:relative; } .nav-link::after { content:""; position:absolute; left:0; bottom:-4px; width:0; height:2px; background:#cf9d33; transition:width .3s ease; } .nav-link:hover::after { width:100%; }
+  .btn-gold { background: linear-gradient(135deg,#f2d488,#cf9d33 55%,#96721f); transition: transform .25s ease, box-shadow .25s ease; box-shadow: 0 8px 24px -6px rgba(150,114,31,.5); } .btn-gold:hover { transform: translateY(-3px) scale(1.02); }
+  .btn-outline { transition: all .3s ease; } .btn-outline:hover { background:#faf7ef; color:#161550; }
+  #siteHeader { transition: transform .35s ease, box-shadow .3s ease; } #siteHeader.header-hide { transform: translateY(-100%); }
+  #mobileOverlay { opacity:0; pointer-events:none; transition: opacity .35s ease; } #mobileOverlay.open { opacity:1; pointer-events:auto; }
+  #mobileMenu { transform: translateX(100%); transition: transform .4s cubic-bezier(.2,.8,.2,1); } #mobileMenu.open { transform: translateX(0); }
+  input, textarea { outline:none; } input:focus, textarea:focus { border-color:#cf9d33; box-shadow: 0 0 0 3px rgba(207,157,51,.15); }
+</style>
+</head>
+<body class="bg-cream text-navy antialiased">
+
+<div class="hidden md:block bg-navy-deep text-cream/80 text-xs font-body tracking-wide">
+  <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+    <div class="flex items-center gap-6"><span>📞 +46 700 155 455</span><span>✉️ winnersassemblymalmo@gmail.com</span></div>
+    <div>📍 Nordenskiöldsgatan 11A, Malmö — near Malmö Central Station</div>
+  </div>
+</div>
+
+<header id="siteHeader" class="sticky top-0 z-50 bg-navy/95 backdrop-blur border-b border-gold/20">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-20">
+    <a href="index.html#home" class="flex items-center gap-2.5 shrink-0">
+      <img src="logo.png" alt="RCCG Winners Assembly Malmö crest" class="h-12 xl:h-14 w-auto">
+      <span class="hidden sm:flex flex-col leading-tight">
+        <span class="font-display font-semibold text-base xl:text-lg text-cream tracking-wide whitespace-nowrap">WINNERS ASSEMBLY</span>
+        <span class="text-[10px] xl:text-[11px] tracking-[0.3em] text-gold uppercase -mt-0.5">Malmö</span>
+      </span>
+    </a>
+    <div class="hidden xl:flex items-center gap-6 2xl:gap-8 text-cream/90 text-[13px] 2xl:text-sm font-medium tracking-wide">
+      <a href="index.html#home" class="nav-link whitespace-nowrap">Home</a>
+      <a href="about.html" class="nav-link whitespace-nowrap">About</a>
+      <a href="index.html#pillars" class="nav-link whitespace-nowrap">What We Believe</a>
+      <a href="index.html#visit" class="nav-link whitespace-nowrap">Plan a Visit</a>
+      <a href="store.html" class="nav-link whitespace-nowrap">Bookstore</a>
+      <a href="prayer.html" class="nav-link whitespace-nowrap text-gold">Prayer Request</a>
+      <a href="index.html#connect" class="nav-link whitespace-nowrap">Contact</a>
+    </div>
+    <div class="flex items-center gap-2 xl:gap-3">
+      <a href="giving.html" class="hidden xl:inline-block btn-outline border-2 border-gold text-gold font-bold text-xs 2xl:text-sm px-4 2xl:px-5 py-2.5 rounded-full tracking-wide whitespace-nowrap">Give</a>
+      <a href="index.html#visit" class="hidden xl:inline-block btn-gold text-navy-deep font-bold text-xs 2xl:text-sm px-4 2xl:px-5 py-2.5 rounded-full tracking-wide whitespace-nowrap">Join Us Sunday</a>
+      <button id="menuBtn" class="xl:hidden text-cream p-2" aria-label="Open menu">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<div id="mobileOverlay" class="fixed inset-0 bg-navy-deep/70 backdrop-blur-sm z-[60] xl:hidden"></div>
+<aside id="mobileMenu" class="fixed top-0 right-0 h-full w-[82%] max-w-sm bg-navy-deep z-[70] xl:hidden shadow-2xl flex flex-col">
+  <div class="flex items-center justify-between px-6 h-20 border-b border-gold/10">
+    <span class="font-display font-semibold text-cream text-lg">Menu</span>
+    <button id="menuCloseBtn" class="text-cream p-2" aria-label="Close menu">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="flex flex-col px-6 py-6 gap-1 text-cream font-medium overflow-y-auto">
+    <a href="index.html#home" class="mobile-link py-3 border-b border-white/5">Home</a>
+    <a href="about.html" class="mobile-link py-3 border-b border-white/5">About</a>
+    <a href="index.html#visit" class="mobile-link py-3 border-b border-white/5">Plan a Visit</a>
+    <a href="store.html" class="mobile-link py-3 border-b border-white/5">Bookstore</a>
+    <a href="prayer.html" class="mobile-link py-3 border-b border-white/5 text-gold">Prayer Request</a>
+    <a href="index.html#connect" class="mobile-link py-3 border-b border-white/5">Contact</a>
+    <a href="giving.html" class="mobile-link btn-outline border-2 border-gold text-gold font-bold text-center px-5 py-3 rounded-full mt-4">Give</a>
+    <a href="index.html#visit" class="mobile-link btn-gold text-navy-deep font-bold text-center px-5 py-3 rounded-full mt-3">Join Us Sunday</a>
+  </div>
+</aside>
+
+<section class="relative bg-gradient-to-b from-navy-deep via-navy to-navy-light py-16 md:py-20">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <p class="uppercase tracking-[0.35em] text-gold text-xs md:text-sm font-bold mb-3">We Stand With You</p>
+    <h1 class="font-display font-bold text-4xl md:text-6xl text-cream">Prayer Request</h1>
+    <p class="text-cream/70 max-w-2xl mx-auto mt-4">"Do not be anxious about anything, but in every situation, by prayer... present your requests to God." — Philippians 4:6</p>
+  </div>
+</section>
+
+<section class="bg-cream py-16 md:py-24">
+  <div class="max-w-2xl mx-auto px-6">
+    <div class="bg-white border border-navy/10 rounded-2xl p-8 md:p-10">
+      <p class="text-navy/60 text-sm mb-6">Share what's on your heart. Your request goes straight to our prayer team and is handled with care.</p>
+
+      <form action="https://formsubmit.co/winnersassemblymalmo@gmail.com" method="POST" class="space-y-4">
+        <input type="hidden" name="_subject" value="New Prayer Request — Website">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="prayer.html?sent=1">
+
+        <div>
+          <label class="text-xs font-semibold text-navy/70 uppercase tracking-wide">Full Name</label>
+          <input type="text" name="Full Name" required class="w-full mt-1 border border-navy/15 rounded-lg px-4 py-2.5 text-sm">
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-navy/70 uppercase tracking-wide">Email or Phone</label>
+          <input type="text" name="Contact" required class="w-full mt-1 border border-navy/15 rounded-lg px-4 py-2.5 text-sm">
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-navy/70 uppercase tracking-wide">Your Prayer Request</label>
+          <textarea name="Prayer Request" rows="5" required class="w-full mt-1 border border-navy/15 rounded-lg px-4 py-2.5 text-sm"></textarea>
+        </div>
+        <label class="flex items-center gap-2 text-sm text-navy/70">
+          <input type="checkbox" name="Keep Confidential" value="Yes, please keep this confidential" class="rounded border-navy/20">
+          Please keep this request confidential
+        </label>
+
+        <button type="submit" class="btn-gold w-full text-navy-deep font-bold py-3 rounded-full tracking-wide mt-2">Submit Prayer Request</button>
+      </form>
+    </div>
+
+    <p class="text-center text-navy/50 text-sm mt-8">If you're in crisis or need urgent help, please also reach out to local emergency services or call us directly at +46 700 155 455.</p>
+  </div>
+</section>
+
+<footer class="bg-navy-deep text-cream/70 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+    <div class="md:col-span-2">
+      <div class="flex items-center gap-3 mb-4">
+        <img src="logo.png" alt="RCCG Winners Assembly Malmö crest" class="h-14 w-auto">
+        <span class="font-display font-semibold text-cream text-lg">Winners Assembly<br><span class="text-gold text-sm tracking-widest">MALMÖ</span></span>
+      </div>
+      <p class="text-sm leading-relaxed max-w-sm">A parish of The Redeemed Christian Church of God, gathering in Malmö to worship, grow, and win together in Christ. Romans 8:37.</p>
+    </div>
+    <div>
+      <h4 class="text-cream font-display font-bold text-lg mb-4">Quick Links</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="about.html" class="hover:text-gold transition-colors">About Us</a></li>
+        <li><a href="index.html#visit" class="hover:text-gold transition-colors">Plan a Visit</a></li>
+        <li><a href="store.html" class="hover:text-gold transition-colors">Bookstore</a></li>
+        <li><a href="giving.html" class="hover:text-gold transition-colors">Giving</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-cream font-display font-bold text-lg mb-4">Contact</h4>
+      <ul class="space-y-2 text-sm">
+        <li>Nordenskiöldsgatan, 11A, Malmö</li>
+        <li>+46 700 155 455</li>
+        <li>winnersassemblymalmo@gmail.com</li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-cream/10 text-center text-xs text-cream/40">
+    <p>© <span id="year"></span> RCCG Winners Assembly Malmö. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const header = document.getElementById('siteHeader');
+  let lastScrollY = window.scrollY, ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if (y > 40) header.classList.add('shadow-lg'); else header.classList.remove('shadow-lg');
+        if (y > lastScrollY && y > 120) header.classList.add('header-hide'); else header.classList.remove('header-hide');
+        lastScrollY = y; ticking = false;
+      });
+      ticking = true;
+    }
+  });
+  const menuBtn = document.getElementById('menuBtn');
+  const menuCloseBtn = document.getElementById('menuCloseBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  function openMenu(){ mobileMenu.classList.add('open'); mobileOverlay.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeMenu(){ mobileMenu.classList.remove('open'); mobileOverlay.classList.remove('open'); document.body.style.overflow=''; }
+  menuBtn.addEventListener('click', openMenu);
+  menuCloseBtn.addEventListener('click', closeMenu);
+  mobileOverlay.addEventListener('click', closeMenu);
+  document.querySelectorAll('.mobile-link').forEach(el => el.addEventListener('click', closeMenu));
+
+  if (new URLSearchParams(window.location.search).get('sent') === '1') {
+    alert('Thank you. Your prayer request has been sent to our prayer team.');
+  }
+</script>
+</body>
+</html>
