@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>RCCG Winners Assembly Malmö — We Win Together in Christ</title>
+<meta name="description" content="RCCG Winners Assembly Malmö. Join us every Sunday at 12:00 Noon at Nordenskiöldsgatan 11A, Malmö, close to Malmö Central Station. Powerful worship, spirit-filled community, life-changing teaching, victory in Christ.">
+<meta name="theme-color" content="#161550">
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="shortcut icon" href="favicon.ico">
+
+<!-- Open Graph -->
+<meta property="og:title" content="RCCG Winners Assembly Malmö">
+<meta property="og:description" content="...we WIN together in Christ — Romans 8:37. Join us every Sunday at 12:00 Noon.">
+<meta property="og:image" content="logo.png">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&family=Tangerine:wght@700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: { DEFAULT: '#161550', deep: '#0d0c33', light: '#232170' },
+          gold: { DEFAULT: '#cf9d33', light: '#f2d488', dark: '#96721f' },
+          crimson: '#a91d2c',
+          emerald: '#12703f',
+          cream: '#faf7ef'
+        },
+        fontFamily: {
+          display: ['"Cormorant Garamond"', 'serif'],
+          script: ['"Tangerine"', 'cursive'],
+          body: ['"Manrope"', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Manrope', sans-serif; background:#faf7ef; overflow-x: hidden; }
+  .font-display { font-family: 'Cormorant Garamond', serif; }
+  .font-script { font-family: 'Tangerine', cursive; }
+
+  /* ---------- Rotating stage-light rays (signature motif) ---------- */
+  .rays {
+    position: absolute; inset: -20%;
+    background: repeating-conic-gradient(
+      from 0deg,
+      rgba(207,157,51,0.10) 0deg 4deg,
+      transparent 4deg 16deg
+    );
+    animation: spin 60s linear infinite;
+    mix-blend-mode: screen;
+  }
+  .rays.reverse { animation-direction: reverse; animation-duration: 90s; opacity:.6; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .glow-orb {
+    position:absolute; border-radius:50%; filter: blur(60px);
+    background: radial-gradient(circle, rgba(207,157,51,.35), transparent 70%);
+    animation: float 9s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-25px) } }
+
+  /* ---------- Crest entrance ---------- */
+  .crest-enter { animation: crestIn 1.1s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes crestIn {
+    0% { opacity:0; transform: scale(.6) rotate(-8deg); }
+    60% { opacity:1; }
+    100% { opacity:1; transform: scale(1) rotate(0deg); }
+  }
+  .stagger > * { opacity:0; transform: translateY(18px); animation: riseIn .8s ease forwards; }
+  .stagger > *:nth-child(1){animation-delay:.15s}
+  .stagger > *:nth-child(2){animation-delay:.35s}
+  .stagger > *:nth-child(3){animation-delay:.55s}
+  .stagger > *:nth-child(4){animation-delay:.75s}
+  .stagger > *:nth-child(5){animation-delay:.95s}
+  @keyframes riseIn { to { opacity:1; transform: translateY(0); } }
+
+  /* ---------- Gold shimmer text ---------- */
+  .shimmer {
+    background: linear-gradient(100deg, #96721f 20%, #f2d488 40%, #fffbe8 50%, #f2d488 60%, #96721f 80%);
+    background-size: 250% auto;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: shimmerMove 5s linear infinite;
+  }
+  @keyframes shimmerMove { to { background-position: -250% center; } }
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal { opacity:0; transform: translateY(40px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.in { opacity:1; transform: translateY(0); }
+  .reveal-stagger.in > * { opacity:1 !important; transform:none !important; }
+  .reveal-stagger > * { opacity:0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal-stagger > *:nth-child(1){transition-delay:.05s}
+  .reveal-stagger > *:nth-child(2){transition-delay:.18s}
+  .reveal-stagger > *:nth-child(3){transition-delay:.31s}
+  .reveal-stagger > *:nth-child(4){transition-delay:.44s}
+
+  /* ---------- Laurel divider ---------- */
+  .laurel-rule { display:flex; align-items:center; gap:.75rem; }
+  .laurel-rule::before, .laurel-rule::after { content:""; height:1px; flex:1; background: linear-gradient(90deg, transparent, #cf9d33, transparent); }
+
+  /* ---------- Pill nav underline ---------- */
+  .nav-link { position:relative; }
+  .nav-link::after {
+    content:""; position:absolute; left:0; bottom:-4px; width:0; height:2px;
+    background:#cf9d33; transition:width .3s ease;
+  }
+  .nav-link:hover::after { width:100%; }
+
+  /* ---------- Card hover lift ---------- */
+  .pillar-card { transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
+  .pillar-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(22,21,80,.35); border-color:#cf9d33; }
+
+  .btn-gold {
+    background: linear-gradient(135deg,#f2d488,#cf9d33 55%,#96721f);
+    transition: transform .25s ease, box-shadow .25s ease;
+    box-shadow: 0 8px 24px -6px rgba(150,114,31,.5);
+  }
+  .btn-gold:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 14px 32px -6px rgba(150,114,31,.65); }
+
+  .btn-outline { transition: all .3s ease; }
+  .btn-outline:hover { background:#faf7ef; color:#161550; }
+
+  /* Marquee ribbon */
+  .marquee-track { display:flex; width:max-content; animation: marquee 28s linear infinite; }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* mobile menu */
+  #mobileMenu { transition: max-height .4s ease, opacity .3s ease; }
+
+  ::selection { background:#cf9d33; color:#161550; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+  }
+
+  .clock-badge { animation: pulseGlow 2.4s ease-in-out infinite; }
+  @keyframes pulseGlow {
+    0%,100% { box-shadow: 0 0 0 0 rgba(207,157,51,.5); }
+    50% { box-shadow: 0 0 0 10px rgba(207,157,51,0); }
+  }
+
+  .book-card { transition: transform .3s ease, box-shadow .3s ease; }
+  .book-card:hover { transform: translateY(-6px) rotate(-.5deg); box-shadow: 0 20px 40px -10px rgba(22,21,80,.4); }
+</style>
+</head>
+
+<body class="bg-cream text-navy antialiased">
+
+<!-- ================= TOP UTILITY BAR ================= -->
+<div class="hidden md:block bg-navy-deep text-cream/80 text-xs font-body tracking-wide">
+  <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+    <div class="flex items-center gap-6">
+      <span class="flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.774a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+        +46 700 155 455
+      </span>
+      <span class="flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M2.94 6.412A2 2 0 002 8.108V14a2 2 0 002 2h12a2 2 0 002-2V8.108a2 2 0 00-.94-1.696l-6-3.75a2 2 0 00-2.12 0l-6 3.75zm2.615 1.677L10 10.882l4.445-2.793L10 5.5 5.555 8.089z"/></svg>
+        winnersassemblymalmo@gmail.com
+      </span>
+    </div>
+    <div class="flex items-center gap-1.5">
+      <svg class="w-3.5 h-3.5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clip-rule="evenodd"/></svg>
+      Nordenskiöldsgatan 11A, Malmö — near Malmö Central Station
+    </div>
+  </div>
+</div>
+
+<!-- ================= NAVBAR ================= -->
+<header id="siteHeader" class="sticky top-0 z-50 bg-navy/95 backdrop-blur border-b border-gold/20 transition-all">
+  <nav class="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+    <a href="#home" class="flex items-center gap-3">
+      <img src="logo.png" alt="RCCG Winners Assembly Malmö crest" class="h-14 w-auto drop-shadow-[0_2px_6px_rgba(0,0,0,.4)]">
+      <span class="hidden sm:flex flex-col leading-tight">
+        <span class="font-display font-semibold text-lg text-cream tracking-wide">WINNERS ASSEMBLY</span>
+        <span class="text-[11px] tracking-[0.3em] text-gold uppercase -mt-0.5">Malmö</span>
+      </span>
+    </a>
+
+    <div class="hidden lg:flex items-center gap-9 text-cream/90 text-sm font-medium tracking-wide">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#welcome" class="nav-link">About</a>
+      <a href="#pillars" class="nav-link">What We Believe</a>
+      <a href="#visit" class="nav-link">Plan a Visit</a>
+      <a href="#store" class="nav-link">Bookstore</a>
+      <a href="#connect" class="nav-link">Contact</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="#visit" class="hidden lg:inline-block btn-gold text-navy-deep font-bold text-sm px-5 py-2.5 rounded-full tracking-wide">Join Us Sunday</a>
+      <button id="menuBtn" class="lg:hidden text-cream p-2" aria-label="Toggle menu">
+        <svg id="iconOpen" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linewidth="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="iconClose" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linewidth="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobileMenu" class="lg:hidden max-h-0 overflow-hidden opacity-0 bg-navy-deep border-t border-gold/10">
+    <div class="flex flex-col px-6 py-4 gap-4 text-cream font-medium">
+      <a href="#home" class="mobile-link py-1">Home</a>
+      <a href="#welcome" class="mobile-link py-1">About</a>
+      <a href="#pillars" class="mobile-link py-1">What We Believe</a>
+      <a href="#visit" class="mobile-link py-1">Plan a Visit</a>
+      <a href="#store" class="mobile-link py-1">Bookstore</a>
+      <a href="#connect" class="mobile-link py-1">Contact</a>
+      <a href="#visit" class="mobile-link btn-gold text-navy-deep font-bold text-center px-5 py-2.5 rounded-full mt-2">Join Us Sunday</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="home" class="relative bg-gradient-to-b from-navy-deep via-navy to-navy-light overflow-hidden">
+  <div class="rays"></div>
+  <div class="rays reverse"></div>
+  <div class="glow-orb w-72 h-72 -top-10 -left-10"></div>
+  <div class="glow-orb w-96 h-96 bottom-0 right-0" style="animation-delay:3s"></div>
+
+  <div class="relative max-w-5xl mx-auto px-6 pt-16 pb-24 md:pt-24 md:pb-32 flex flex-col items-center text-center stagger">
+    <img src="logo.png" alt="RCCG crest — The Redeemed Christian Church of God, Winners Assembly Malmö" class="crest-enter h-32 md:h-44 w-auto mb-6 drop-shadow-[0_10px_30px_rgba(207,157,51,.35)]">
+
+    <p class="text-gold tracking-[0.35em] uppercase text-xs md:text-sm font-semibold">The Redeemed Christian Church of God</p>
+
+    <h1 class="font-display font-bold text-4xl sm:text-5xl md:text-7xl text-cream mt-3 tracking-wide">
+      WINNERS ASSEMBLY
+    </h1>
+    <p class="font-display italic text-gold text-2xl md:text-4xl tracking-[0.2em] -mt-1 md:-mt-2">MALMÖ</p>
+
+    <p class="font-script shimmer text-6xl md:text-8xl leading-none mt-4">Welcomes</p>
+    <p class="text-cream/80 text-sm md:base tracking-widest uppercase mt-1">and invites you to</p>
+
+    <h2 class="font-display font-extrabold text-5xl sm:text-6xl md:text-8xl shimmer mt-2 tracking-wide">WORSHIP</h2>
+    <p class="font-script text-cream text-4xl md:text-5xl -mt-2 md:-mt-3">with us</p>
+
+    <div class="mt-8 flex flex-col items-center gap-3">
+      <p class="text-cream/90 uppercase tracking-[0.3em] text-xs md:text-sm font-semibold">Every Sunday</p>
+      <div class="clock-badge flex items-center gap-2 bg-cream text-navy-deep font-bold text-lg md:text-xl px-6 py-2.5 rounded-full">
+        <svg class="w-5 h-5 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        12:00 Noon
+      </div>
+    </div>
+
+    <div class="mt-10 flex flex-col sm:flex-row gap-4">
+      <a href="#visit" class="btn-gold text-navy-deep font-bold px-8 py-3.5 rounded-full tracking-wide">Plan Your Visit</a>
+      <a href="https://www.tiktok.com/@Rccg%20Winners%20Assembly%20Malmo" target="_blank" rel="noopener" class="btn-outline border-2 border-gold text-gold font-bold px-8 py-3.5 rounded-full tracking-wide">Watch Online</a>
+    </div>
+  </div>
+
+  <!-- gold curved divider like the flyer -->
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 80" class="w-full h-16 md:h-20" preserveAspectRatio="none"><path fill="#faf7ef" d="M0,64 C360,0 1080,0 1440,64 L1440,80 L0,80 Z"/><path fill="none" stroke="#cf9d33" stroke-width="3" d="M0,64 C360,0 1080,0 1440,64"/></svg>
+  </div>
+</section>
+
+<!-- ================= WELCOME / ABOUT ================= -->
+<section id="welcome" class="bg-cream py-20 md:py-28 relative">
+  <div class="max-w-5xl mx-auto px-6 text-center reveal">
+    <div class="laurel-rule max-w-xs mx-auto mb-6">
+      <span class="text-gold text-xl">✦</span>
+    </div>
+    <p class="uppercase tracking-[0.35em] text-crimson text-xs md:text-sm font-bold mb-4">You Are Welcome Home</p>
+    <h2 class="font-display font-bold text-3xl md:text-5xl text-navy leading-tight">
+      A family where <span class="text-emerald">everybody belongs</span>,<br class="hidden md:block"> and every victory is <span class="italic text-crimson">shared</span>.
+    </h2>
+    <p class="mt-8 text-navy/70 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
+      Winners Assembly Malmö is a parish of The Redeemed Christian Church of God, planted in the heart of Malmö to raise a community of believers who live victoriously through Christ. Whether you are visiting Sweden, newly settled in Malmö, or have called this city home for years — you have a seat waiting for you here. Come as you are, and leave transformed.
+    </p>
+    <p class="font-script text-5xl md:text-6xl text-gold-dark mt-10">"...we <span class="text-crimson">WIN</span> together in Christ"</p>
+    <p class="uppercase tracking-[0.3em] text-navy/50 text-xs font-semibold mt-2">Romans 8:37</p>
+  </div>
+</section>
+
+<!-- ================= PILLARS ================= -->
+<section id="pillars" class="bg-navy-deep py-20 md:py-28 relative overflow-hidden">
+  <div class="rays" style="opacity:.35"></div>
+  <div class="relative max-w-6xl mx-auto px-6">
+    <div class="text-center reveal mb-14">
+      <p class="uppercase tracking-[0.35em] text-gold text-xs md:text-sm font-bold mb-3">What We Stand For</p>
+      <h2 class="font-display font-bold text-3xl md:text-5xl text-cream">Four Pillars of Our Assembly</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-stagger">
+      <div class="pillar-card bg-navy border border-gold/20 rounded-2xl p-8 text-center">
+        <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-gold-light to-gold-dark flex items-center justify-center mb-5">
+          <svg class="w-8 h-8 text-navy-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-cream mb-2">Powerful Worship</h3>
+        <p class="text-cream/60 text-sm leading-relaxed">Encountering God in spirit and truth, through anointed praise and worship every service.</p>
+      </div>
+
+      <div class="pillar-card bg-navy border border-gold/20 rounded-2xl p-8 text-center">
+        <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-gold-light to-gold-dark flex items-center justify-center mb-5">
+          <svg class="w-8 h-8 text-navy-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-cream mb-2">Spirit-Filled Community</h3>
+        <p class="text-cream/60 text-sm leading-relaxed">A warm family across Malmö where relationships are built and no one worships alone.</p>
+      </div>
+
+      <div class="pillar-card bg-navy border border-gold/20 rounded-2xl p-8 text-center">
+        <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-gold-light to-gold-dark flex items-center justify-center mb-5">
+          <svg class="w-8 h-8 text-navy-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-cream mb-2">Life-Changing Teaching</h3>
+        <p class="text-cream/60 text-sm leading-relaxed">Sound, practical biblical teaching that equips you to live victoriously in everyday life.</p>
+      </div>
+
+      <div class="pillar-card bg-navy border border-gold/20 rounded-2xl p-8 text-center">
+        <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-gold-light to-gold-dark flex items-center justify-center mb-5">
+          <svg class="w-8 h-8 text-navy-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-cream mb-2">Victory in Christ</h3>
+        <p class="text-cream/60 text-sm leading-relaxed">Standing on God's promises, we live as more than conquerors through Him who loves us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PLAN A VISIT ================= -->
+<section id="visit" class="bg-cream py-20 md:py-28">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center reveal mb-14">
+      <p class="uppercase tracking-[0.35em] text-crimson text-xs md:text-sm font-bold mb-3">First Time?</p>
+      <h2 class="font-display font-bold text-3xl md:text-5xl text-navy">Plan Your Visit</h2>
+      <p class="text-navy/60 max-w-2xl mx-auto mt-4">We'd love to have you. Here's everything you need to know before you come.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-10 items-stretch">
+      <div class="reveal space-y-5">
+        <div class="flex gap-4 items-start bg-white border border-navy/10 rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 shrink-0 rounded-full bg-navy flex items-center justify-center">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-display font-bold text-lg text-navy">Service Time</h3>
+            <p class="text-navy/70 text-sm mt-1">Every Sunday — 12:00 Noon<br>Come 15 minutes early to find a seat and settle in.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4 items-start bg-white border border-navy/10 rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 shrink-0 rounded-full bg-navy flex items-center justify-center">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-display font-bold text-lg text-navy">Our Location</h3>
+            <p class="text-navy/70 text-sm mt-1">Nordenskiöldsgatan, 11A, Malmö<br>Just a short walk from Malmö Central Station.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4 items-start bg-white border border-navy/10 rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 shrink-0 rounded-full bg-navy flex items-center justify-center">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-display font-bold text-lg text-navy">What to Expect</h3>
+            <p class="text-navy/70 text-sm mt-1">Warm welcome, uplifting worship, practical Word, and a family ready to celebrate you.</p>
+          </div>
+        </div>
+
+        <a href="#connect" class="btn-gold inline-flex items-center gap-2 text-navy-deep font-bold px-8 py-3.5 rounded-full tracking-wide mt-2">
+          I'm New Here — Say Hello
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+
+      <div class="reveal rounded-2xl overflow-hidden shadow-lg border border-navy/10 min-h-[380px]">
+        <iframe
+          class="w-full h-full min-h-[380px]"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Nordenskiöldsgatan+11A,+Malmö,+Sweden&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BOOKSTORE TEASER ================= -->
+<section id="store" class="bg-navy py-20 md:py-28 relative overflow-hidden">
+  <div class="glow-orb w-80 h-80 top-10 -right-20"></div>
+  <div class="relative max-w-6xl mx-auto px-6">
+    <div class="text-center reveal mb-14">
+      <p class="uppercase tracking-[0.35em] text-gold text-xs md:text-sm font-bold mb-3">Grow Your Faith</p>
+      <h2 class="font-display font-bold text-3xl md:text-5xl text-cream">The Winners Bookstore</h2>
+      <p class="text-cream/60 max-w-2xl mx-auto mt-4">Books, devotionals, and resources from our pastors and ministers — coming soon to help you grow deeper in the Word.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-stagger">
+      <div class="book-card bg-cream rounded-xl overflow-hidden shadow-lg">
+        <div class="h-44 bg-gradient-to-br from-navy-light to-navy flex items-center justify-center">
+          <svg class="w-12 h-12 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+        </div>
+        <div class="p-4">
+          <p class="font-display font-bold text-navy">Living in Victory</p>
+          <p class="text-navy/50 text-xs mt-1">Devotional • Coming Soon</p>
+        </div>
+      </div>
+      <div class="book-card bg-cream rounded-xl overflow-hidden shadow-lg">
+        <div class="h-44 bg-gradient-to-br from-navy-light to-navy flex items-center justify-center">
+          <svg class="w-12 h-12 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+        </div>
+        <div class="p-4">
+          <p class="font-display font-bold text-navy">Faith That Wins</p>
+          <p class="text-navy/50 text-xs mt-1">Bible Study • Coming Soon</p>
+        </div>
+      </div>
+      <div class="book-card bg-cream rounded-xl overflow-hidden shadow-lg">
+        <div class="h-44 bg-gradient-to-br from-navy-light to-navy flex items-center justify-center">
+          <svg class="w-12 h-12 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+        </div>
+        <div class="p-4">
+          <p class="font-display font-bold text-navy">Prayer Handbook</p>
+          <p class="text-navy/50 text-xs mt-1">Prayer Guide • Coming Soon</p>
+        </div>
+      </div>
+      <div class="book-card bg-cream rounded-xl overflow-hidden shadow-lg">
+        <div class="h-44 bg-gradient-to-br from-navy-light to-navy flex items-center justify-center">
+          <svg class="w-12 h-12 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+        </div>
+        <div class="p-4">
+          <p class="font-display font-bold text-navy">Sunday Devotionals</p>
+          <p class="text-navy/50 text-xs mt-1">Weekly Series • Coming Soon</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-12 reveal">
+      <a href="store.html" class="btn-gold inline-block text-navy-deep font-bold px-8 py-3.5 rounded-full tracking-wide">Visit the Bookstore</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARQUEE RIBBON ================= -->
+<div class="bg-gold py-3 overflow-hidden">
+  <div class="marquee-track text-navy-deep font-display font-bold text-lg tracking-widest uppercase">
+    <span class="px-6">✦ We Win Together In Christ</span><span class="px-6">✦ Powerful Worship</span><span class="px-6">✦ Spirit-Filled Community</span><span class="px-6">✦ Life-Changing Teaching</span><span class="px-6">✦ Victory In Christ</span>
+    <span class="px-6">✦ We Win Together In Christ</span><span class="px-6">✦ Powerful Worship</span><span class="px-6">✦ Spirit-Filled Community</span><span class="px-6">✦ Life-Changing Teaching</span><span class="px-6">✦ Victory In Christ</span>
+  </div>
+</div>
+
+<!-- ================= CONNECT / SOCIAL ================= -->
+<section id="connect" class="bg-cream py-20 md:py-28">
+  <div class="max-w-5xl mx-auto px-6 text-center reveal">
+    <p class="uppercase tracking-[0.35em] text-crimson text-xs md:text-sm font-bold mb-3">Stay Connected</p>
+    <h2 class="font-display font-bold text-3xl md:text-5xl text-navy mb-6">Follow Us</h2>
+    <p class="text-navy/60 max-w-xl mx-auto mb-10">@Rccg Winners Assembly Malmo — follow along for service updates, testimonies, and moments from our assembly.</p>
+
+    <div class="flex justify-center gap-5 flex-wrap">
+      <a href="#" target="_blank" rel="noopener" aria-label="Facebook" class="w-14 h-14 rounded-full bg-navy text-cream flex items-center justify-center hover:bg-gold hover:text-navy-deep transition-colors duration-300 hover:-translate-y-1">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.5 9.87v-6.98H7.9V12h2.6V9.8c0-2.57 1.53-4 3.87-4 1.12 0 2.3.2 2.3.2v2.5h-1.3c-1.28 0-1.68.8-1.68 1.62V12h2.86l-.46 2.89h-2.4v6.98A10 10 0 0022 12z"/></svg>
+      </a>
+      <a href="#" target="_blank" rel="noopener" aria-label="Instagram" class="w-14 h-14 rounded-full bg-navy text-cream flex items-center justify-center hover:bg-gold hover:text-navy-deep transition-colors duration-300 hover:-translate-y-1">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 2.02.24 2.5.42.62.24 1.07.53 1.53 1 .47.46.76.91 1 1.53.18.48.37 1.33.42 2.5.06 1.25.07 1.65.07 4.85s0 3.6-.07 4.85c-.05 1.17-.24 2.02-.42 2.5-.24.62-.53 1.07-1 1.53-.46.47-.91.76-1.53 1-.48.18-1.33.37-2.5.42-1.25.06-1.65.07-4.85.07s-3.6 0-4.85-.07c-1.17-.05-2.02-.24-2.5-.42-.62-.24-1.07-.53-1.53-1-.47-.46-.76-.91-1-1.53-.18-.48-.37-1.33-.42-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.85c.05-1.17.24-2.02.42-2.5.24-.62.53-1.07 1-1.53.46-.47.91-.76 1.53-1 .48-.18 1.33-.37 2.5-.42C8.4 2.2 8.8 2.2 12 2.2zm0 3.13a6.67 6.67 0 100 13.34 6.67 6.67 0 000-13.34zm0 11a4.33 4.33 0 110-8.67 4.33 4.33 0 010 8.67zm6.94-11.24a1.56 1.56 0 11-3.12 0 1.56 1.56 0 013.12 0z"/></svg>
+      </a>
+      <a href="#" target="_blank" rel="noopener" aria-label="YouTube" class="w-14 h-14 rounded-full bg-navy text-cream flex items-center justify-center hover:bg-gold hover:text-navy-deep transition-colors duration-300 hover:-translate-y-1">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3.02 3.02 0 00-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.56A3.02 3.02 0 00.5 6.2 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.8 3.02 3.02 0 002.12 2.14c1.88.56 9.38.56 9.38.56s7.5 0 9.38-.56a3.02 3.02 0 002.12-2.14A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.8zM9.6 15.6V8.4l6.3 3.6z"/></svg>
+      </a>
+      <a href="#" target="_blank" rel="noopener" aria-label="TikTok" class="w-14 h-14 rounded-full bg-navy text-cream flex items-center justify-center hover:bg-gold hover:text-navy-deep transition-colors duration-300 hover:-translate-y-1">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M16.6 3c.34 2.4 1.85 3.9 4.4 4.1v3.03c-1.5.15-2.83-.32-4.4-1.24v6.36c0 5.1-5.56 8.4-10 6.15-2.8-1.42-4.24-4.66-3.4-7.63.9-3.2 4.24-5.13 7.4-4.4v3.16c-.36-.12-.76-.19-1.18-.19-1.66 0-3 1.34-3 3s1.34 3 3 3c1.7 0 3.15-1.4 3.15-3.1V3h3.03z"/></svg>
+      </a>
+    </div>
+
+    <div class="mt-16 laurel-rule max-w-xs mx-auto"><span class="text-gold text-xl">✦</span></div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-navy-deep text-cream/70 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+    <div class="md:col-span-2">
+      <div class="flex items-center gap-3 mb-4">
+        <img src="logo.png" alt="RCCG Winners Assembly Malmö crest" class="h-14 w-auto">
+        <span class="font-display font-semibold text-cream text-lg">Winners Assembly<br><span class="text-gold text-sm tracking-widest">MALMÖ</span></span>
+      </div>
+      <p class="text-sm leading-relaxed max-w-sm">A parish of The Redeemed Christian Church of God, gathering in Malmö to worship, grow, and win together in Christ. Romans 8:37.</p>
+    </div>
+    <div>
+      <h4 class="text-cream font-display font-bold text-lg mb-4">Quick Links</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#welcome" class="hover:text-gold transition-colors">About Us</a></li>
+        <li><a href="#pillars" class="hover:text-gold transition-colors">What We Believe</a></li>
+        <li><a href="#visit" class="hover:text-gold transition-colors">Plan a Visit</a></li>
+        <li><a href="store.html" class="hover:text-gold transition-colors">Bookstore</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-cream font-display font-bold text-lg mb-4">Contact</h4>
+      <ul class="space-y-2 text-sm">
+        <li>Nordenskiöldsgatan, 11A, Malmö</li>
+        <li>Close to Malmö Central Station</li>
+        <li>+46 700 155 455</li>
+        <li>winnersassemblymalmo@gmail.com</li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-cream/10 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-cream/40">
+    <p>© <span id="year"></span> RCCG Winners Assembly Malmö. All rights reserved.</p>
+    <p class="font-script text-gold text-xl">...we WIN together in Christ</p>
+  </div>
+</footer>
+
+<script>
+  // year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const iconOpen = document.getElementById('iconOpen');
+  const iconClose = document.getElementById('iconClose');
+  let menuOpen = false;
+  menuBtn.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    if (menuOpen) {
+      mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+      mobileMenu.style.opacity = 1;
+      iconOpen.classList.add('hidden');
+      iconClose.classList.remove('hidden');
+    } else {
+      mobileMenu.style.maxHeight = '0px';
+      mobileMenu.style.opacity = 0;
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    }
+  });
+  document.querySelectorAll('.mobile-link').forEach(el => el.addEventListener('click', () => {
+    menuOpen = false;
+    mobileMenu.style.maxHeight = '0px';
+    mobileMenu.style.opacity = 0;
+    iconOpen.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+  }));
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // header shrink on scroll
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) header.classList.add('shadow-lg');
+    else header.classList.remove('shadow-lg');
+  });
+</script>
+</body>
+</html>
