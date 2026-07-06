@@ -375,25 +375,32 @@
     <!-- To add your own photos: replace each <div class="frame-placeholder">...</div>
          with <img src="your-photo.jpg" alt="..."> inside the .photo-frame div. -->
     <div class="grid sm:grid-cols-3 gap-5 mt-16 reveal-stagger">
-      <div class="photo-frame aspect-[4/5] sm:translate-y-4">
-        <div class="frame-placeholder">
-          <svg class="w-9 h-9 text-gold/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 3h18v18H3V3z"/></svg>
-          <p class="text-xs tracking-wide">Photo frame 1<br>Worship service</p>
-        </div>
-      </div>
-      <div class="photo-frame aspect-[4/5]">
-        <div class="frame-placeholder">
-          <svg class="w-9 h-9 text-gold/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 3h18v18H3V3z"/></svg>
-          <p class="text-xs tracking-wide">Photo frame 2<br>Our community</p>
-        </div>
-      </div>
-      <div class="photo-frame aspect-[4/5] sm:translate-y-4">
-        <div class="frame-placeholder">
-          <svg class="w-9 h-9 text-gold/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 3h18v18H3V3z"/></svg>
-          <p class="text-xs tracking-wide">Photo frame 3<br>Sanctuary</p>
-        </div>
-      </div>
-    </div>
+  
+  <div class="photo-frame aspect-[4/5] sm:translate-y-4 overflow-hidden rounded-lg">
+    <img
+      src="p1.jpg"
+      alt="Worship service"
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+  <div class="photo-frame aspect-[4/5] overflow-hidden rounded-lg">
+    <img
+      src="p2.jpg"
+      alt="Our community"
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+  <div class="photo-frame aspect-[4/5] sm:translate-y-4 overflow-hidden rounded-lg">
+    <img
+      src="p3.jpg"
+      alt="Sanctuary"
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+</div>
 
     <p class="font-script text-5xl md:text-6xl text-gold-dark mt-16 text-center">"...we <span class="text-crimson">WIN</span> together in Christ"</p>
     <p class="uppercase tracking-[0.3em] text-navy/50 text-xs font-semibold mt-2 text-center">Romans 8:37</p>
