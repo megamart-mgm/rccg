@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>About Us — RCCG Winners Assembly Malmö</title>
+<meta name="description" content="Learn about RCCG Winners Assembly Malmö, our mission, our leadership, and our ministries — Youth, Children, Women's, Men's, Music/Worship, and Outreach.">
+<meta name="theme-color" content="#161550">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&family=Tangerine:wght@700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        navy: { DEFAULT: '#161550', deep: '#0d0c33', light: '#232170' },
+        gold: { DEFAULT: '#cf9d33', light: '#f2d488', dark: '#96721f' },
+        crimson: { DEFAULT: '#a91d2c', light: '#c94b57' },
+        emerald: { DEFAULT: '#12703f', light: '#3e9c6a' },
+        cream: '#faf7ef'
+      },
+      fontFamily: {
+        display: ['"Cormorant Garamond"', 'serif'],
+        script: ['"Tangerine"', 'cursive'],
+        body: ['"Manrope"', 'sans-serif']
+      }
+    } }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Manrope', sans-serif; background:#faf7ef; overflow-x:hidden; }
+  .font-display { font-family: 'Cormorant Garamond', serif; }
+  .font-script { font-family: 'Tangerine', cursive; }
+  .nav-link { position:relative; }
+  .nav-link::after { content:""; position:absolute; left:0; bottom:-4px; width:0; height:2px; background:#cf9d33; transition:width .3s ease; }
+  .nav-link:hover::after { width:100%; }
+  .btn-gold { background: linear-gradient(135deg,#f2d488,#cf9d33 55%,#96721f); transition: transform .25s ease, box-shadow .25s ease; box-shadow: 0 8px 24px -6px rgba(150,114,31,.5); }
+  .btn-gold:hover { transform: translateY(-3px) scale(1.02); }
+  .btn-outline { transition: all .3s ease; }
+  .btn-outline:hover { background:#faf7ef; color:#161550; }
+  #siteHeader { transition: transform .35s ease, box-shadow .3s ease; }
+  #siteHeader.header-hide { transform: translateY(-100%); }
+  .dropdown-panel { opacity:0; visibility:hidden; transform: translateY(8px); transition: opacity .2s ease, transform .2s ease, visibility .2s; }
+  .dropdown-wrap:hover .dropdown-panel, .dropdown-wrap:focus-within .dropdown-panel { opacity:1; visibility:visible; transform: translateY(0); }
+  #mobileOverlay { opacity:0; pointer-events:none; transition: opacity .35s ease; }
+  #mobileOverlay.open { opacity:1; pointer-events:auto; }
+  #mobileMenu { transform: translateX(100%); transition: transform .4s cubic-bezier(.2,.8,.2,1); }
+  #mobileMenu.open { transform: translateX(0); }
+  .reveal { opacity:0; transform: translateY(40px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.in { opacity:1; transform: translateY(0); }
+  .reveal-stagger.in > * { opacity:1 !important; transform:none !important; }
+  .reveal-stagger > * { opacity:0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal-stagger > *:nth-child(1){transition-delay:.05s}
+  .reveal-stagger > *:nth-child(2){transition-delay:.18s}
+  .reveal-stagger > *:nth-child(3){transition-delay:.31s}
+  .reveal-stagger > *:nth-child(4){transition-delay:.44s}
+  .laurel-rule { display:flex; align-items:center; gap:.75rem; }
+  .laurel-rule::before, .laurel-rule::after { content:""; height:1px; flex:1; background: linear-gradient(90deg, transparent, #cf9d33, transparent); }
+  .min-card { transition: transform .3s ease, box-shadow .3s ease; }
+  .min-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -14px rgba(22,21,80,.25); }
+</style>
+</head>
+<body class="bg-cream text-navy antialiased">
+
+<div class="hidden md:block bg-navy-deep text-cream/80 text-xs font-body tracking-wide">
+  <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+    <div class="flex items-center gap-6">
+      <span class="flex items-center gap-1.5">📞 +46 700 155 455</span>
+      <span class="flex items-center gap-1.5">✉️ winnersassemblymalmo@gmail.com</span>
+    </div>
+    <div class="flex items-center gap-1.5">📍 Nordenskiöldsgatan 11A, Malmö — near Malmö Central Station</div>
+  </div>
+</div>
+
+<header id="siteHeader" class="sticky top-0 z-50 bg-navy/95 backdrop-blur border-b border-gold/20">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-20">
+    <a href="index.html#home" class="flex items-center gap-2.5 shrink-0">
+      <img src="logo.png" alt="RCCG Winners Assembly Malmö crest" class="h-12 xl:h-14 w-auto">
+      <span class="hidden sm:flex flex-col leading-tight">
+        <span class="font-display font-semibold text-base xl:text-lg text-cream tracking-wide whitespace-nowrap">WINNERS ASSEMBLY</span>
+        <span class="text-[10px] xl:text-[11px] tracking-[0.3em] text-gold uppercase -mt-0.5">Malmö</span>
+      </span>
+    </a>
+    <div class="hidden xl:flex items-center gap-6 2xl:gap-8 text-cream/90 text-[13px] 2xl:text-sm font-medium tracking-wide">
+      <a href="index.html#home" class="nav-link whitespace-nowrap">Home</a>
+      <a href="about.html" class="nav-link whitespace-nowrap text-gold">About</a>
+      <a href="index.html#pillars" class="nav-link whitespace-nowrap">What We Believe</a>
+      <div class="dropdown-wrap relative">
+        <button class="nav-link flex items-center gap-1 whitespace-nowrap">Ministries
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="dropdown-panel absolute left-1/2 -translate-x-1/2 top-full pt-4 w-56 z-50">
+          <div class="bg-white rounded-xl shadow-2xl border border-navy/10 overflow-hidden">
+            <a href="about.html#youth" class="block px-5 py-3 text-navy text-sm font-medium hover:bg-cream hover:text-crimson">Youth</a>
+            <a href="about.html#children" class="block px-5 py-3 text-navy text-sm font-medium hover:bg-cream hover:text-crimson">Children</a>
+            <a href="about.html#women" class="block px-5 py-3 text-navy text-sm font-medium hover:bg-cream hover:text-crimson">Women's Ministry</a>
+            <a href="about.html#men" class="block px-5 py-3 text-navy text-sm font-medium hover:bg-cream hover:text-crimson">Men's Ministry</a>
+            <a href="about.html#music" class="block px-5 py-3 text-navy text-sm font-medium hover:bg-cream hover:text-crimson">Music / Worship</a>
+            <a href="about.html#outreach" class="block px-5 py-3 text-navy text-sm font-medium hover:bg-cream hover:text-crimson">Outreach</a>
+          </div>
+        </div>
+      </div>
+      <a href="index.html#visit" class="nav-link whitespace-nowrap">Plan a Visit</a>
+      <a href="store.html" class="nav-link whitespace-nowrap">Bookstore</a>
+      <a href="prayer.html" class="nav-link whitespace-nowrap">Prayer Request</a>
+      <a href="index.html#connect" class="nav-link whitespace-nowrap">Contact</a>
+    </div>
+    <div class="flex items-center gap-2 xl:gap-3">
+      <a href="giving.html" class="hidden xl:inline-block btn-outline border-2 border-gold text-gold font-bold text-xs 2xl:text-sm px-4 2xl:px-5 py-2.5 rounded-full tracking-wide whitespace-nowrap">Give</a>
+      <a href="index.html#visit" class="hidden xl:inline-block btn-gold text-navy-deep font-bold text-xs 2xl:text-sm px-4 2xl:px-5 py-2.5 rounded-full tracking-wide whitespace-nowrap">Join Us Sunday</a>
+      <button id="menuBtn" class="xl:hidden text-cream p-2" aria-label="Open menu">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<div id="mobileOverlay" class="fixed inset-0 bg-navy-deep/70 backdrop-blur-sm z-[60] xl:hidden"></div>
+<aside id="mobileMenu" class="fixed top-0 right-0 h-full w-[82%] max-w-sm bg-navy-deep z-[70] xl:hidden shadow-2xl flex flex-col">
+  <div class="flex items-center justify-between px-6 h-20 border-b border-gold/10">
+    <span class="font-display font-semibold text-cream text-lg">Menu</span>
+    <button id="menuCloseBtn" class="text-cream p-2" aria-label="Close menu">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="flex flex-col px-6 py-6 gap-1 text-cream font-medium overflow-y-auto">
+    <a href="index.html#home" class="mobile-link py-3 border-b border-white/5">Home</a>
+    <a href="about.html" class="mobile-link py-3 border-b border-white/5 text-gold">About</a>
+    <a href="index.html#pillars" class="mobile-link py-3 border-b border-white/5">What We Believe</a>
+    <button id="ministriesToggle" class="flex items-center justify-between py-3 border-b border-white/5 w-full text-left">
+      Ministries
+      <svg id="ministriesChevron" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </button>
+    <div id="ministriesPanel" class="max-h-0 overflow-hidden flex flex-col pl-4">
+      <a href="about.html#youth" class="mobile-link py-2 text-cream/70 text-sm">Youth</a>
+      <a href="about.html#children" class="mobile-link py-2 text-cream/70 text-sm">Children</a>
+      <a href="about.html#women" class="mobile-link py-2 text-cream/70 text-sm">Women's Ministry</a>
+      <a href="about.html#men" class="mobile-link py-2 text-cream/70 text-sm">Men's Ministry</a>
+      <a href="about.html#music" class="mobile-link py-2 text-cream/70 text-sm">Music / Worship</a>
+      <a href="about.html#outreach" class="mobile-link py-2 text-cream/70 text-sm">Outreach</a>
+    </div>
+    <a href="index.html#visit" class="mobile-link py-3 border-b border-white/5">Plan a Visit</a>
+    <a href="store.html" class="mobile-link py-3 border-b border-white/5">Bookstore</a>
+    <a href="prayer.html" class="mobile-link py-3 border-b border-white/5">Prayer Request</a>
+    <a href="index.html#connect" class="mobile-link py-3 border-b border-white/5">Contact</a>
+    <a href="giving.html" class="mobile-link btn-outline border-2 border-gold text-gold font-bold text-center px-5 py-3 rounded-full mt-4">Give</a>
+    <a href="index.html#visit" class="mobile-link btn-gold text-navy-deep font-bold text-center px-5 py-3 rounded-full mt-3">Join Us Sunday</a>
+  </div>
+</aside>
+
+<!-- ================= PAGE HERO ================= -->
+<section class="relative bg-gradient-to-b from-navy-deep via-navy to-navy-light py-20 md:py-28 overflow-hidden">
+  <div class="relative max-w-5xl mx-auto px-6 text-center">
+    <p class="uppercase tracking-[0.35em] text-gold text-xs md:text-sm font-bold mb-3">Who We Are</p>
+    <h1 class="font-display font-bold text-4xl md:text-6xl text-cream">About Winners Assembly Malmö</h1>
+    <p class="text-cream/70 max-w-2xl mx-auto mt-5 text-base md:text-lg">A parish of The Redeemed Christian Church of God, raising a family of believers who live victoriously through Christ, in the heart of Malmö.</p>
+  </div>
+</section>
+
+<!-- ================= MISSION / VISION ================= -->
+<section class="bg-cream py-20 md:py-24">
+  <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-10 reveal-stagger">
+    <div class="bg-white border border-navy/10 rounded-2xl p-8">
+      <p class="uppercase tracking-[0.3em] text-crimson text-xs font-bold mb-3">Our Mission</p>
+      <h3 class="font-display font-bold text-2xl text-navy mb-3">Winning Souls, Building Lives</h3>
+      <p class="text-navy/70 text-sm leading-relaxed">To reach the city of Malmö and beyond with the uncompromised Word of God, making disciples who worship in spirit and truth and live out the victory that is already theirs in Christ.</p>
+    </div>
+    <div class="bg-white border border-navy/10 rounded-2xl p-8">
+      <p class="uppercase tracking-[0.3em] text-emerald text-xs font-bold mb-3">Our Vision</p>
+      <h3 class="font-display font-bold text-2xl text-navy mb-3">A Family for Every Nation</h3>
+      <p class="text-navy/70 text-sm leading-relaxed">To be a home in Malmö where people of every background and nation find belonging, grow in faith, and are equipped to carry the light of Christ into their homes, workplaces, and communities.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MINISTRIES ================= -->
+<section class="bg-white py-20 md:py-28 border-t border-navy/5">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center reveal mb-14">
+      <p class="uppercase tracking-[0.35em] text-crimson text-xs md:text-sm font-bold mb-3">Get Involved</p>
+      <h2 class="font-display font-bold text-3xl md:text-5xl text-navy">Our Ministries</h2>
+      <p class="text-navy/60 max-w-2xl mx-auto mt-4">There's a place for you to serve, grow, and belong. Here's where our ministries are today.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
+      <div id="youth" class="min-card bg-cream border border-navy/10 rounded-2xl p-7 scroll-mt-28">
+        <div class="w-12 h-12 rounded-full bg-gold/15 flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-gold-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-navy mb-2">Youth</h3>
+        <p class="text-navy/60 text-sm leading-relaxed">Raising a bold generation of young people rooted in faith, purpose, and community.</p>
+      </div>
+      <div id="children" class="min-card bg-cream border border-navy/10 rounded-2xl p-7 scroll-mt-28">
+        <div class="w-12 h-12 rounded-full bg-crimson/10 flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-crimson" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-navy mb-2">Children</h3>
+        <p class="text-navy/60 text-sm leading-relaxed">A safe, fun, Christ-centered space where our children learn God's Word at their own level.</p>
+      </div>
+      <div id="women" class="min-card bg-cream border border-navy/10 rounded-2xl p-7 scroll-mt-28">
+        <div class="w-12 h-12 rounded-full bg-emerald/15 flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 21a8.25 8.25 0 006.16-13.75M12 21a8.25 8.25 0 01-6.16-13.75M12 21V3m6.16 4.25a8.25 8.25 0 00-12.32 0"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-navy mb-2">Women's Ministry</h3>
+        <p class="text-navy/60 text-sm leading-relaxed">A sisterhood of prayer, fellowship, and growth, encouraging women in every season of life.</p>
+      </div>
+      <div id="men" class="min-card bg-cream border border-navy/10 rounded-2xl p-7 scroll-mt-28">
+        <div class="w-12 h-12 rounded-full bg-navy/10 flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-navy mb-2">Men's Ministry</h3>
+        <p class="text-navy/60 text-sm leading-relaxed">Building men of integrity, faith, and purpose who lead well at home and in the community.</p>
+      </div>
+      <div id="music" class="min-card bg-cream border border-navy/10 rounded-2xl p-7 scroll-mt-28">
+        <div class="w-12 h-12 rounded-full bg-gold/15 flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-gold-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V4.938c0-1.416-1.42-2.39-2.75-1.888l-8.5 3.183A2.25 2.25 0 003 8.318v8.485c0 .414.336.75.75.75h.008a1.803 1.803 0 001.774-1.542l-.033.203a1.803 1.803 0 10-3.556.59 1.803 1.803 0 003.556-.59z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-navy mb-2">Music / Worship</h3>
+        <p class="text-navy/60 text-sm leading-relaxed">Leading the church into God's presence through anointed, excellent, spirit-led worship.</p>
+      </div>
+      <div id="outreach" class="min-card bg-cream border border-navy/10 rounded-2xl p-7 scroll-mt-28">
+        <div class="w-12 h-12 rounded-full bg-crimson/10 flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-crimson" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 21c-4.97-3.32-9-7.44-9-11.25A5.25 5.25 0 0112 6.75a5.25 5.25 0 019 3c0 3.81-4.03 7.93-9 11.25z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-navy mb-2">Outreach</h3>
+        <p class="text-navy/60 text-sm leading-relaxed">Taking the love and Gospel of Christ beyond our walls, into Malmö and the wider community.</p>
+      </div>
+    </div>
+
+    <div class="text-center mt-12 reveal">
+      <a href="index.html#connect" class="btn-gold inline-block text-navy-deep font-bold px-8 py-3.5 rounded-full tracking-wide">Join a Ministry</a>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-navy-deep text-cream/70 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+    <div class="md:col-span-2">
+      <div class="flex items-center gap-3 mb-4">
+        <img src="logo.png" alt="RCCG Winners Assembly Malmö crest" class="h-14 w-auto">
+        <span class="font-display font-semibold text-cream text-lg">Winners Assembly<br><span class="text-gold text-sm tracking-widest">MALMÖ</span></span>
+      </div>
+      <p class="text-sm leading-relaxed max-w-sm">A parish of The Redeemed Christian Church of God, gathering in Malmö to worship, grow, and win together in Christ. Romans 8:37.</p>
+    </div>
+    <div>
+      <h4 class="text-cream font-display font-bold text-lg mb-4">Quick Links</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="about.html" class="hover:text-gold transition-colors">About Us</a></li>
+        <li><a href="index.html#pillars" class="hover:text-gold transition-colors">What We Believe</a></li>
+        <li><a href="index.html#visit" class="hover:text-gold transition-colors">Plan a Visit</a></li>
+        <li><a href="store.html" class="hover:text-gold transition-colors">Bookstore</a></li>
+        <li><a href="giving.html" class="hover:text-gold transition-colors">Giving</a></li>
+        <li><a href="prayer.html" class="hover:text-gold transition-colors">Prayer Request</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-cream font-display font-bold text-lg mb-4">Contact</h4>
+      <ul class="space-y-2 text-sm">
+        <li>Nordenskiöldsgatan, 11A, Malmö</li>
+        <li>Close to Malmö Central Station</li>
+        <li>+46 700 155 455</li>
+        <li>winnersassemblymalmo@gmail.com</li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-cream/10 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-cream/40">
+    <p>© <span id="year"></span> RCCG Winners Assembly Malmö. All rights reserved.</p>
+    <p class="font-script text-gold text-xl">...we WIN together in Christ</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const header = document.getElementById('siteHeader');
+  let lastScrollY = window.scrollY, ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if (y > 40) header.classList.add('shadow-lg'); else header.classList.remove('shadow-lg');
+        if (y > lastScrollY && y > 120) header.classList.add('header-hide'); else header.classList.remove('header-hide');
+        lastScrollY = y; ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  const menuBtn = document.getElementById('menuBtn');
+  const menuCloseBtn = document.getElementById('menuCloseBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  function openMenu(){ mobileMenu.classList.add('open'); mobileOverlay.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeMenu(){ mobileMenu.classList.remove('open'); mobileOverlay.classList.remove('open'); document.body.style.overflow=''; }
+  menuBtn.addEventListener('click', openMenu);
+  menuCloseBtn.addEventListener('click', closeMenu);
+  mobileOverlay.addEventListener('click', closeMenu);
+  document.querySelectorAll('.mobile-link').forEach(el => el.addEventListener('click', closeMenu));
+
+  const ministriesToggle = document.getElementById('ministriesToggle');
+  const ministriesPanel = document.getElementById('ministriesPanel');
+  const ministriesChevron = document.getElementById('ministriesChevron');
+  let ministriesOpen = false;
+  ministriesToggle.addEventListener('click', () => {
+    ministriesOpen = !ministriesOpen;
+    ministriesPanel.style.maxHeight = ministriesOpen ? ministriesPanel.scrollHeight + 'px' : '0px';
+    ministriesChevron.style.transform = ministriesOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+  });
+
+  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
