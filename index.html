@@ -33,8 +33,8 @@
         colors: {
           navy: { DEFAULT: '#161550', deep: '#0d0c33', light: '#232170' },
           gold: { DEFAULT: '#cf9d33', light: '#f2d488', dark: '#96721f' },
-          crimson: '#a91d2c',
-          emerald: '#12703f',
+          crimson: { DEFAULT: '#a91d2c', light: '#c94b57' },
+          emerald: { DEFAULT: '#12703f', light: '#3e9c6a' },
           cream: '#faf7ef'
         },
         fontFamily: {
@@ -122,7 +122,7 @@
 
   /* ---------- Card hover lift ---------- */
   .pillar-card { transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
-  .pillar-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(22,21,80,.35); border-color:#cf9d33; }
+  .pillar-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(22,21,80,.2); }
 
   .btn-gold {
     background: linear-gradient(135deg,#f2d488,#cf9d33 55%,#96721f);
@@ -138,9 +138,6 @@
   .marquee-track { display:flex; width:max-content; animation: marquee 28s linear infinite; }
   @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-  /* mobile menu */
-  #mobileMenu { transition: max-height .4s ease, opacity .3s ease; }
-
   ::selection { background:#cf9d33; color:#161550; }
 
   @media (prefers-reduced-motion: reduce) {
@@ -154,7 +151,46 @@
   }
 
   .book-card { transition: transform .3s ease, box-shadow .3s ease; }
-  .book-card:hover { transform: translateY(-6px) rotate(-.5deg); box-shadow: 0 20px 40px -10px rgba(22,21,80,.4); }
+  .book-card:hover { transform: translateY(-6px) rotate(-.5deg); box-shadow: 0 20px 40px -10px rgba(22,21,80,.25); }
+
+  /* ---------- Header: slide up/down on scroll ---------- */
+  #siteHeader { transition: transform .35s ease, box-shadow .3s ease; }
+  #siteHeader.header-hide { transform: translateY(-100%); }
+
+  /* ---------- Ministries dropdown ---------- */
+  .dropdown-panel {
+    opacity:0; visibility:hidden; transform: translateY(8px);
+    transition: opacity .2s ease, transform .2s ease, visibility .2s;
+  }
+  .dropdown-wrap:hover .dropdown-panel,
+  .dropdown-wrap:focus-within .dropdown-panel {
+    opacity:1; visibility:visible; transform: translateY(0);
+  }
+
+  /* ---------- Mobile menu: slide in from the right ---------- */
+  #mobileOverlay {
+    opacity:0; pointer-events:none; transition: opacity .35s ease;
+  }
+  #mobileOverlay.open { opacity:1; pointer-events:auto; }
+  #mobileMenu {
+    transform: translateX(100%);
+    transition: transform .4s cubic-bezier(.2,.8,.2,1);
+  }
+  #mobileMenu.open { transform: translateX(0); }
+
+  /* ---------- Image frames ---------- */
+  .photo-frame {
+    position:relative; border-radius:1rem; overflow:hidden;
+    box-shadow: 0 20px 40px -16px rgba(22,21,80,.35);
+    border: 4px solid #faf7ef;
+    outline: 1px solid rgba(207,157,51,.5);
+  }
+  .photo-frame img { width:100%; height:100%; object-fit:cover; display:block; }
+  .photo-frame .frame-placeholder {
+    width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.5rem;
+    background: linear-gradient(135deg,#232170,#161550 60%,#0d0c33);
+    color: rgba(250,247,239,.55); text-align:center; padding:1rem;
+  }
 </style>
 </head>
 
@@ -181,54 +217,88 @@
 </div>
 
 <!-- ================= NAVBAR ================= -->
-<header id="siteHeader" class="fixed top-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur border-b border-gold/20 transition-transform duration-300">
-  <nav class="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
-    <a href="#home" class="flex items-center gap-3">
-      <img src="logo.png" alt="RCCG Winners Assembly Malmö crest" class="h-14 w-auto drop-shadow-[0_2px_6px_rgba(0,0,0,.4)]">
+<header id="siteHeader" class="sticky top-0 z-50 bg-navy/95 backdrop-blur border-b border-gold/20">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-20">
+    <a href="index.html#home" class="flex items-center gap-2.5 shrink-0">
+      <img src="logo.png" alt="RCCG Winners Assembly Malmö crest" class="h-12 xl:h-14 w-auto drop-shadow-[0_2px_6px_rgba(0,0,0,.4)]">
       <span class="hidden sm:flex flex-col leading-tight">
-        <span class="font-display font-semibold text-lg text-cream tracking-wide">WINNERS ASSEMBLY</span>
-        <span class="text-[11px] tracking-[0.3em] text-gold uppercase -mt-0.5">Malmö</span>
+        <span class="font-display font-semibold text-base xl:text-lg text-cream tracking-wide whitespace-nowrap">WINNERS ASSEMBLY</span>
+        <span class="text-[10px] xl:text-[11px] tracking-[0.3em] text-gold uppercase -mt-0.5">Malmö</span>
       </span>
     </a>
 
-    <div class="hidden lg:flex items-center gap-9 text-cream/90 text-sm font-medium tracking-wide">
-      <a href="#home" class="nav-link">Home</a>
-      <a href="#welcome" class="nav-link">About</a>
-      <a href="#pillars" class="nav-link">What We Believe</a>
-      <a href="#visit" class="nav-link">Plan a Visit</a>
-      <a href="#store" class="nav-link">Bookstore</a>
-      <a href="#connect" class="nav-link">Contact</a>
+    <div class="hidden xl:flex items-center gap-6 2xl:gap-8 text-cream/90 text-[13px] 2xl:text-sm font-medium tracking-wide">
+      <a href="index.html#home" class="nav-link whitespace-nowrap">Home</a>
+      <a href="about.html" class="nav-link whitespace-nowrap">About</a>
+      <a href="index.html#pillars" class="nav-link whitespace-nowrap">What We Believe</a>
+
+      <div class="dropdown-wrap relative">
+        <button class="nav-link flex items-center gap-1 whitespace-nowrap">
+          Ministries
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="dropdown-panel absolute left-1/2 -translate-x-1/2 top-full pt-4 w-56 z-50">
+          <div class="bg-white rounded-xl shadow-2xl border border-navy/10 overflow-hidden">
+            <a href="about.html#youth" class="block px-5 py-3 text-navy text-sm font-medium hover:bg-cream hover:text-crimson transition-colors">Youth</a>
+            <a href="about.html#children" class="block px-5 py-3 text-navy text-sm font-medium hover:bg-cream hover:text-crimson transition-colors">Children</a>
+            <a href="about.html#women" class="block px-5 py-3 text-navy text-sm font-medium hover:bg-cream hover:text-crimson transition-colors">Women's Ministry</a>
+            <a href="about.html#men" class="block px-5 py-3 text-navy text-sm font-medium hover:bg-cream hover:text-crimson transition-colors">Men's Ministry</a>
+            <a href="about.html#music" class="block px-5 py-3 text-navy text-sm font-medium hover:bg-cream hover:text-crimson transition-colors">Music / Worship</a>
+            <a href="about.html#outreach" class="block px-5 py-3 text-navy text-sm font-medium hover:bg-cream hover:text-crimson transition-colors">Outreach</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="index.html#visit" class="nav-link whitespace-nowrap">Plan a Visit</a>
+      <a href="store.html" class="nav-link whitespace-nowrap">Bookstore</a>
+      <a href="prayer.html" class="nav-link whitespace-nowrap">Prayer Request</a>
+      <a href="index.html#connect" class="nav-link whitespace-nowrap">Contact</a>
     </div>
 
-    <div class="flex items-center gap-3">
-      <a href="#visit" class="hidden lg:inline-block btn-gold text-navy-deep font-bold text-sm px-5 py-2.5 rounded-full tracking-wide">Join Us Sunday</a>
-      <button id="menuBtn" class="lg:hidden text-cream p-2" aria-label="Open menu">
-        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linewidth="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    <div class="flex items-center gap-2 xl:gap-3">
+      <a href="giving.html" class="hidden xl:inline-block btn-outline border-2 border-gold text-gold font-bold text-xs 2xl:text-sm px-4 2xl:px-5 py-2.5 rounded-full tracking-wide whitespace-nowrap">Give</a>
+      <a href="index.html#visit" class="hidden xl:inline-block btn-gold text-navy-deep font-bold text-xs 2xl:text-sm px-4 2xl:px-5 py-2.5 rounded-full tracking-wide whitespace-nowrap">Join Us Sunday</a>
+      <button id="menuBtn" class="xl:hidden text-cream p-2" aria-label="Open menu">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linewidth="2" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
   </nav>
 </header>
 
-<!-- spacer so the fixed header doesn't cover content -->
-<div class="h-20"></div>
-
-<!-- ================= MOBILE DRAWER (slides in from the right) ================= -->
-<div id="menuOverlay" class="fixed inset-0 bg-navy-deep/70 backdrop-blur-sm z-[60] opacity-0 pointer-events-none transition-opacity duration-300"></div>
-<aside id="mobileMenu" class="fixed top-0 right-0 h-full w-[78%] max-w-xs bg-navy-deep z-[70] translate-x-full transition-transform duration-400 ease-out shadow-2xl border-l border-gold/20 flex flex-col">
-  <div class="flex items-center justify-between px-6 h-20 border-b border-gold/10 shrink-0">
-    <span class="font-display font-semibold text-cream text-lg tracking-wide">Menu</span>
+<!-- ================= MOBILE MENU (slides in from the right) ================= -->
+<div id="mobileOverlay" class="fixed inset-0 bg-navy-deep/70 backdrop-blur-sm z-[60] xl:hidden"></div>
+<aside id="mobileMenu" class="fixed top-0 right-0 h-full w-[82%] max-w-sm bg-navy-deep z-[70] xl:hidden shadow-2xl flex flex-col">
+  <div class="flex items-center justify-between px-6 h-20 border-b border-gold/10">
+    <span class="font-display font-semibold text-cream text-lg">Menu</span>
     <button id="menuCloseBtn" class="text-cream p-2" aria-label="Close menu">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linewidth="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
   </div>
   <div class="flex flex-col px-6 py-6 gap-1 text-cream font-medium overflow-y-auto">
-    <a href="#home" class="mobile-link py-3 border-b border-cream/10">Home</a>
-    <a href="#welcome" class="mobile-link py-3 border-b border-cream/10">About</a>
-    <a href="#pillars" class="mobile-link py-3 border-b border-cream/10">What We Believe</a>
-    <a href="#visit" class="mobile-link py-3 border-b border-cream/10">Plan a Visit</a>
-    <a href="#store" class="mobile-link py-3 border-b border-cream/10">Bookstore</a>
-    <a href="#connect" class="mobile-link py-3">Contact</a>
-    <a href="#visit" class="mobile-link btn-gold text-navy-deep font-bold text-center px-5 py-2.5 rounded-full mt-5">Join Us Sunday</a>
+    <a href="index.html#home" class="mobile-link py-3 border-b border-white/5">Home</a>
+    <a href="about.html" class="mobile-link py-3 border-b border-white/5">About</a>
+    <a href="index.html#pillars" class="mobile-link py-3 border-b border-white/5">What We Believe</a>
+
+    <button id="ministriesToggle" class="flex items-center justify-between py-3 border-b border-white/5 w-full text-left">
+      Ministries
+      <svg id="ministriesChevron" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </button>
+    <div id="ministriesPanel" class="max-h-0 overflow-hidden flex flex-col pl-4">
+      <a href="about.html#youth" class="mobile-link py-2 text-cream/70 text-sm">Youth</a>
+      <a href="about.html#children" class="mobile-link py-2 text-cream/70 text-sm">Children</a>
+      <a href="about.html#women" class="mobile-link py-2 text-cream/70 text-sm">Women's Ministry</a>
+      <a href="about.html#men" class="mobile-link py-2 text-cream/70 text-sm">Men's Ministry</a>
+      <a href="about.html#music" class="mobile-link py-2 text-cream/70 text-sm">Music / Worship</a>
+      <a href="about.html#outreach" class="mobile-link py-2 text-cream/70 text-sm">Outreach</a>
+    </div>
+
+    <a href="index.html#visit" class="mobile-link py-3 border-b border-white/5">Plan a Visit</a>
+    <a href="store.html" class="mobile-link py-3 border-b border-white/5">Bookstore</a>
+    <a href="prayer.html" class="mobile-link py-3 border-b border-white/5">Prayer Request</a>
+    <a href="index.html#connect" class="mobile-link py-3 border-b border-white/5">Contact</a>
+
+    <a href="giving.html" class="mobile-link btn-outline border-2 border-gold text-gold font-bold text-center px-5 py-3 rounded-full mt-4">Give</a>
+    <a href="index.html#visit" class="mobile-link btn-gold text-navy-deep font-bold text-center px-5 py-3 rounded-full mt-3">Join Us Sunday</a>
   </div>
 </aside>
 
@@ -239,87 +309,106 @@
   <div class="glow-orb w-72 h-72 -top-10 -left-10"></div>
   <div class="glow-orb w-96 h-96 bottom-0 right-0" style="animation-delay:3s"></div>
 
-  <div class="relative max-w-7xl mx-auto px-6 pt-10 pb-12 md:pt-10 md:pb-14">
-    <div class="grid lg:grid-cols-[auto,1fr,300px] gap-7 lg:gap-10 items-center stagger">
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-10 pt-14 pb-16 md:pt-16 md:pb-20">
+    <div class="grid md:grid-cols-[auto,1fr] gap-8 md:gap-12 lg:gap-16 items-center stagger">
 
-      <img src="logo.png" alt="RCCG crest — The Redeemed Christian Church of God, Winners Assembly Malmö" class="crest-enter h-20 md:h-24 w-auto mx-auto lg:mx-0 drop-shadow-[0_10px_30px_rgba(207,157,51,.35)]">
+      <img src="logo.png" alt="RCCG crest — The Redeemed Christian Church of God, Winners Assembly Malmö" class="crest-enter h-24 md:h-32 lg:h-36 w-auto mx-auto md:mx-0 drop-shadow-[0_10px_30px_rgba(207,157,51,.35)]">
 
-      <div class="text-center lg:text-left">
+      <div class="text-center md:text-left max-w-2xl">
         <p class="text-gold tracking-[0.3em] uppercase text-[11px] md:text-xs font-semibold">The Redeemed Christian Church of God</p>
 
-        <h1 class="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-cream mt-2 tracking-wide leading-tight">
+        <h1 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-[3.4rem] text-cream mt-2 tracking-wide leading-tight">
           Winners Assembly <span class="italic text-gold">Malmö</span>
         </h1>
 
-        <p class="text-cream/80 text-sm mt-3 max-w-xl mx-auto lg:mx-0">
-          <span class="font-script shimmer text-xl md:text-2xl align-middle">Welcomes</span> you to <span class="font-semibold text-cream">worship with us</span> — a family where every victory is shared.
+        <p class="text-cream/80 text-sm md:text-base mt-3 max-w-xl mx-auto md:mx-0">
+          <span class="font-script shimmer text-2xl md:text-3xl align-middle">Welcomes</span> you to <span class="font-semibold text-cream">worship with us</span> — a family where every victory is shared.
         </p>
 
-        <div class="mt-4 flex flex-wrap items-center justify-center lg:justify-start gap-3">
-          <div class="clock-badge flex items-center gap-2 bg-cream text-navy-deep font-bold text-xs md:text-sm px-4 py-1.5 rounded-full">
+        <div class="mt-5 flex flex-wrap items-center justify-center md:justify-start gap-3">
+          <div class="clock-badge flex items-center gap-2 bg-cream text-navy-deep font-bold text-sm md:text-base px-5 py-2 rounded-full">
             <svg class="w-4 h-4 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             Sundays · 12:00 Noon
           </div>
-          <div class="flex items-center gap-2 border border-gold/40 text-cream/80 text-xs md:text-sm px-4 py-1.5 rounded-full">
+          <div class="flex items-center gap-2 border border-gold/40 text-cream/80 text-sm px-5 py-2 rounded-full">
             <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
             Near Malmö Central Station
           </div>
         </div>
 
-        <div class="mt-5 flex flex-wrap justify-center lg:justify-start gap-3">
+        <div class="mt-6 flex flex-wrap justify-center md:justify-start gap-3">
           <a href="#visit" class="btn-gold text-navy-deep font-bold px-6 py-2.5 rounded-full tracking-wide text-sm">Plan Your Visit</a>
           <a href="https://www.tiktok.com/@Rccg%20Winners%20Assembly%20Malmo" target="_blank" rel="noopener" class="btn-outline border-2 border-gold text-gold font-bold px-6 py-2.5 rounded-full tracking-wide text-sm">Watch Online</a>
         </div>
-      </div>
-
-      <div class="hidden lg:block relative rounded-2xl overflow-hidden border-2 border-gold/40 shadow-[0_20px_50px_-15px_rgba(0,0,0,.6)] aspect-[4/5]">
-        <img src="https://images.unsplash.com/photo-1478147427282-58a87a120781?fm=jpg&q=70&w=900&auto=format&fit=crop" alt="Congregation with hands raised in worship" class="w-full h-full object-cover" loading="eager">
-        <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/70 via-transparent to-transparent"></div>
       </div>
     </div>
   </div>
 
   <!-- gold curved divider like the flyer -->
   <div class="absolute bottom-0 left-0 right-0">
-    <svg viewBox="0 0 1440 40" class="w-full h-8 md:h-10" preserveAspectRatio="none"><path fill="#faf7ef" d="M0,32 C360,0 1080,0 1440,32 L1440,40 L0,40 Z"/><path fill="none" stroke="#cf9d33" stroke-width="2" d="M0,32 C360,0 1080,0 1440,32"/></svg>
+    <svg viewBox="0 0 1440 50" class="w-full h-10 md:h-12" preserveAspectRatio="none"><path fill="#faf7ef" d="M0,40 C360,0 1080,0 1440,40 L1440,50 L0,50 Z"/><path fill="none" stroke="#cf9d33" stroke-width="2" d="M0,40 C360,0 1080,0 1440,40"/></svg>
   </div>
 </section>
 
 <!-- ================= WELCOME / ABOUT ================= -->
-<section id="welcome" class="bg-cream py-20 md:py-28 relative overflow-hidden">
+<section id="welcome" class="bg-cream py-20 md:py-28 relative">
   <div class="max-w-6xl mx-auto px-6">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
-      <div class="reveal order-2 lg:order-1 text-center lg:text-left">
-        <div class="laurel-rule max-w-[220px] mx-auto lg:mx-0 mb-6">
-          <span class="text-gold text-xl">✦</span>
-        </div>
-        <p class="uppercase tracking-[0.35em] text-crimson text-xs md:text-sm font-bold mb-4">You Are Welcome Home</p>
-        <h2 class="font-display font-bold text-3xl md:text-4xl text-navy leading-tight">
-          A family where <span class="text-emerald">everybody belongs</span>, and every victory is <span class="italic text-crimson">shared</span>.
-        </h2>
-        <p class="mt-6 text-navy/70 text-base leading-relaxed">
-          Winners Assembly Malmö is a parish of The Redeemed Christian Church of God, planted in the heart of Malmö to raise a community of believers who live victoriously through Christ. Whether you are visiting Sweden, newly settled in Malmö, or have called this city home for years — you have a seat waiting for you here.
-        </p>
-        <p class="font-script text-4xl md:text-5xl text-gold-dark mt-8">"...we <span class="text-crimson">WIN</span> together in Christ"</p>
-        <p class="uppercase tracking-[0.3em] text-navy/50 text-xs font-semibold mt-1">Romans 8:37</p>
+    <div class="text-center reveal">
+      <div class="laurel-rule max-w-xs mx-auto mb-6">
+        <span class="text-gold text-xl">✦</span>
       </div>
+      <p class="uppercase tracking-[0.35em] text-crimson text-xs md:text-sm font-bold mb-4">You Are Welcome Home</p>
+      <h2 class="font-display font-bold text-3xl md:text-5xl text-navy leading-tight">
+        A family where <span class="text-emerald">everybody belongs</span>,<br class="hidden md:block"> and every victory is <span class="italic text-crimson">shared</span>.
+      </h2>
+      <p class="mt-8 text-navy/70 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
+        Winners Assembly Malmö is a parish of The Redeemed Christian Church of God, planted in the heart of Malmö to raise a community of believers who live victoriously through Christ. Whether you are visiting Sweden, newly settled in Malmö, or have called this city home for years — you have a seat waiting for you here. Come as you are, and leave transformed.
+      </p>
 
-      <div class="reveal order-1 lg:order-2 relative">
-        <div class="rounded-2xl overflow-hidden shadow-xl border-4 border-white aspect-[4/3]">
-          <img src="https://images.unsplash.com/photo-1776091104217-02e3732a4a81?fm=jpg&q=70&w=1000&auto=format&fit=crop" alt="A member of the congregation worshipping with hands raised" class="w-full h-full object-cover" loading="lazy">
-        </div>
-        <div class="hidden sm:block absolute -bottom-6 -left-6 bg-navy-deep rounded-xl px-6 py-4 shadow-lg border border-gold/30">
-          <p class="font-script text-gold text-3xl leading-none">Come as you are</p>
-        </div>
-      </div>
-
+      <a href="about.html" class="btn-gold inline-flex items-center gap-2 text-navy-deep font-bold px-7 py-3 rounded-full tracking-wide mt-8 text-sm">
+        More About Us
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
     </div>
+
+    <!-- ===== Photo gallery — 3 frames ready for your images ===== -->
+    <!-- To add your own photos: replace each <div class="frame-placeholder">...</div>
+         with <img src="your-photo.jpg" alt="..."> inside the .photo-frame div. -->
+    <div class="grid sm:grid-cols-3 gap-5 mt-16 reveal-stagger">
+  
+  <div class="photo-frame aspect-[4/5] sm:translate-y-4 overflow-hidden rounded-lg">
+    <img
+      src="p1.jpg"
+      alt="Worship service"
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+  <div class="photo-frame aspect-[4/5] overflow-hidden rounded-lg">
+    <img
+      src="p2.jpg"
+      alt="Our community"
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+  <div class="photo-frame aspect-[4/5] sm:translate-y-4 overflow-hidden rounded-lg">
+    <img
+      src="p3.jpg"
+      alt="Sanctuary"
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+</div>
+
+    <p class="font-script text-5xl md:text-6xl text-gold-dark mt-16 text-center">"...we <span class="text-crimson">WIN</span> together in Christ"</p>
+    <p class="uppercase tracking-[0.3em] text-navy/50 text-xs font-semibold mt-2 text-center">Romans 8:37</p>
   </div>
 </section>
 
-<!-- ================= PILLARS ================= -->
-<section id="pillars" class="bg-cream py-20 md:py-28 relative overflow-hidden">
+<!-- ================= PILLARS (recolored — no more all-purple) ================= -->
+<section id="pillars" class="bg-cream py-20 md:py-28 relative overflow-hidden border-t border-navy/5">
   <div class="relative max-w-6xl mx-auto px-6">
     <div class="text-center reveal mb-14">
       <p class="uppercase tracking-[0.35em] text-crimson text-xs md:text-sm font-bold mb-3">What We Stand For</p>
@@ -336,7 +425,7 @@
       </div>
 
       <div class="pillar-card bg-white border border-navy/10 rounded-2xl p-8 text-center shadow-sm">
-        <div class="w-16 h-16 mx-auto rounded-full bg-emerald/10 flex items-center justify-center mb-5">
+        <div class="w-16 h-16 mx-auto rounded-full bg-emerald/15 flex items-center justify-center mb-5">
           <svg class="w-8 h-8 text-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
         </div>
         <h3 class="font-display font-bold text-xl text-navy mb-2">Spirit-Filled Community</h3>
@@ -362,17 +451,8 @@
   </div>
 </section>
 
-<!-- ================= PHOTO STRIP ================= -->
-<section class="bg-navy-deep py-4">
-  <div class="grid grid-cols-3 gap-1 md:gap-2 max-h-[280px] overflow-hidden">
-    <img src="https://images.unsplash.com/photo-1740650511388-f693ce80016c?fm=jpg&q=70&w=700&auto=format&fit=crop" alt="Congregation worshipping together" class="w-full h-[180px] md:h-[280px] object-cover" loading="lazy">
-    <img src="https://images.unsplash.com/photo-1600288480699-0b0d8a456dd8?fm=jpg&q=70&w=700&auto=format&fit=crop" alt="Members engaged in worship" class="w-full h-[180px] md:h-[280px] object-cover" loading="lazy">
-    <img src="https://images.unsplash.com/photo-1478147427282-58a87a120781?fm=jpg&q=70&w=700&auto=format&fit=crop" alt="Group worshipping together" class="w-full h-[180px] md:h-[280px] object-cover" loading="lazy">
-  </div>
-</section>
-
 <!-- ================= PLAN A VISIT ================= -->
-<section id="visit" class="bg-cream py-20 md:py-28">
+<section id="visit" class="bg-white py-20 md:py-28 border-t border-navy/5">
   <div class="max-w-6xl mx-auto px-6">
     <div class="text-center reveal mb-14">
       <p class="uppercase tracking-[0.35em] text-crimson text-xs md:text-sm font-bold mb-3">First Time?</p>
@@ -382,7 +462,7 @@
 
     <div class="grid lg:grid-cols-2 gap-10 items-stretch">
       <div class="reveal space-y-5">
-        <div class="flex gap-4 items-start bg-white border border-navy/10 rounded-2xl p-6 shadow-sm">
+        <div class="flex gap-4 items-start bg-cream border border-navy/10 rounded-2xl p-6">
           <div class="w-12 h-12 shrink-0 rounded-full bg-navy flex items-center justify-center">
             <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
@@ -392,7 +472,7 @@
           </div>
         </div>
 
-        <div class="flex gap-4 items-start bg-white border border-navy/10 rounded-2xl p-6 shadow-sm">
+        <div class="flex gap-4 items-start bg-cream border border-navy/10 rounded-2xl p-6">
           <div class="w-12 h-12 shrink-0 rounded-full bg-navy flex items-center justify-center">
             <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
           </div>
@@ -402,7 +482,7 @@
           </div>
         </div>
 
-        <div class="flex gap-4 items-start bg-white border border-navy/10 rounded-2xl p-6 shadow-sm">
+        <div class="flex gap-4 items-start bg-cream border border-navy/10 rounded-2xl p-6">
           <div class="w-12 h-12 shrink-0 rounded-full bg-navy flex items-center justify-center">
             <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
           </div>
@@ -412,7 +492,7 @@
           </div>
         </div>
 
-        <a href="#connect" class="btn-gold inline-flex items-center gap-2 text-navy-deep font-bold px-8 py-3.5 rounded-full tracking-wide mt-2">
+        <a href="index.html#connect" class="btn-gold inline-flex items-center gap-2 text-navy-deep font-bold px-8 py-3.5 rounded-full tracking-wide mt-2">
           I'm New Here — Say Hello
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
@@ -430,53 +510,33 @@
   </div>
 </section>
 
-<!-- ================= BOOKSTORE TEASER ================= -->
-<section id="store" class="bg-cream py-20 md:py-28 relative overflow-hidden">
+<!-- ================= BOOKSTORE PREVIEW (recolored + live from Supabase) ================= -->
+<section id="store" class="bg-cream py-20 md:py-28 relative overflow-hidden border-t border-navy/5">
   <div class="relative max-w-6xl mx-auto px-6">
     <div class="text-center reveal mb-14">
       <p class="uppercase tracking-[0.35em] text-crimson text-xs md:text-sm font-bold mb-3">Grow Your Faith</p>
       <h2 class="font-display font-bold text-3xl md:text-5xl text-navy">The Winners Bookstore</h2>
-      <p class="text-navy/60 max-w-2xl mx-auto mt-4">Books, devotionals, and resources from our pastors and ministers, to help you grow deeper in the Word.</p>
+      <p class="text-navy/60 max-w-2xl mx-auto mt-4">Books, devotionals, and resources from our pastors and ministers to help you grow deeper in the Word.</p>
     </div>
 
-    <div id="storeGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-stagger">
-      <!-- populated live from Supabase by the script at the bottom of the page; these 4 are the fallback shown only if the fetch fails or the table is empty -->
-      <a href="store.html" class="book-card bg-white border border-navy/10 rounded-xl overflow-hidden shadow-md block">
-        <div class="h-44 bg-gradient-to-br from-navy-light to-navy flex items-center justify-center">
-          <svg class="w-12 h-12 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
-        </div>
-        <div class="p-4">
-          <p class="font-display font-bold text-navy">Visit the Bookstore</p>
-          <p class="text-navy/50 text-xs mt-1">Browse the full catalog</p>
-        </div>
-      </a>
-      <a href="store.html" class="book-card bg-white border border-navy/10 rounded-xl overflow-hidden shadow-md block">
-        <div class="h-44 bg-gradient-to-br from-navy-light to-navy flex items-center justify-center">
-          <svg class="w-12 h-12 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
-        </div>
-        <div class="p-4">
-          <p class="font-display font-bold text-navy">Visit the Bookstore</p>
-          <p class="text-navy/50 text-xs mt-1">Browse the full catalog</p>
-        </div>
-      </a>
-      <a href="store.html" class="book-card bg-white border border-navy/10 rounded-xl overflow-hidden shadow-md block">
-        <div class="h-44 bg-gradient-to-br from-navy-light to-navy flex items-center justify-center">
-          <svg class="w-12 h-12 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
-        </div>
-        <div class="p-4">
-          <p class="font-display font-bold text-navy">Visit the Bookstore</p>
-          <p class="text-navy/50 text-xs mt-1">Browse the full catalog</p>
-        </div>
-      </a>
-      <a href="store.html" class="book-card bg-white border border-navy/10 rounded-xl overflow-hidden shadow-md block">
-        <div class="h-44 bg-gradient-to-br from-navy-light to-navy flex items-center justify-center">
-          <svg class="w-12 h-12 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
-        </div>
-        <div class="p-4">
-          <p class="font-display font-bold text-navy">Visit the Bookstore</p>
-          <p class="text-navy/50 text-xs mt-1">Browse the full catalog</p>
-        </div>
-      </a>
+    <div id="bookGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-stagger">
+      <!-- Loading skeletons; replaced by JS with real products from Supabase -->
+      <div class="book-card bg-white rounded-xl overflow-hidden shadow-md animate-pulse">
+        <div class="h-44 bg-navy/10"></div>
+        <div class="p-4"><div class="h-4 bg-navy/10 rounded w-3/4 mb-2"></div><div class="h-3 bg-navy/10 rounded w-1/2"></div></div>
+      </div>
+      <div class="book-card bg-white rounded-xl overflow-hidden shadow-md animate-pulse">
+        <div class="h-44 bg-navy/10"></div>
+        <div class="p-4"><div class="h-4 bg-navy/10 rounded w-3/4 mb-2"></div><div class="h-3 bg-navy/10 rounded w-1/2"></div></div>
+      </div>
+      <div class="book-card bg-white rounded-xl overflow-hidden shadow-md animate-pulse">
+        <div class="h-44 bg-navy/10"></div>
+        <div class="p-4"><div class="h-4 bg-navy/10 rounded w-3/4 mb-2"></div><div class="h-3 bg-navy/10 rounded w-1/2"></div></div>
+      </div>
+      <div class="book-card bg-white rounded-xl overflow-hidden shadow-md animate-pulse">
+        <div class="h-44 bg-navy/10"></div>
+        <div class="p-4"><div class="h-4 bg-navy/10 rounded w-3/4 mb-2"></div><div class="h-3 bg-navy/10 rounded w-1/2"></div></div>
+      </div>
     </div>
 
     <div class="text-center mt-12 reveal">
@@ -510,7 +570,7 @@
       <a href="#" target="_blank" rel="noopener" aria-label="YouTube" class="w-14 h-14 rounded-full bg-navy text-cream flex items-center justify-center hover:bg-gold hover:text-navy-deep transition-colors duration-300 hover:-translate-y-1">
         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3.02 3.02 0 00-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.56A3.02 3.02 0 00.5 6.2 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.8 3.02 3.02 0 002.12 2.14c1.88.56 9.38.56 9.38.56s7.5 0 9.38-.56a3.02 3.02 0 002.12-2.14A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.8zM9.6 15.6V8.4l6.3 3.6z"/></svg>
       </a>
-      <a href="#" target="_blank" rel="noopener" aria-label="TikTok" class="w-14 h-14 rounded-full bg-navy text-cream flex items-center justify-center hover:bg-gold hover:text-navy-deep transition-colors duration-300 hover:-translate-y-1">
+      <a href="https://www.tiktok.com/@Rccg%20Winners%20Assembly%20Malmo" target="_blank" rel="noopener" aria-label="TikTok" class="w-14 h-14 rounded-full bg-navy text-cream flex items-center justify-center hover:bg-gold hover:text-navy-deep transition-colors duration-300 hover:-translate-y-1">
         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M16.6 3c.34 2.4 1.85 3.9 4.4 4.1v3.03c-1.5.15-2.83-.32-4.4-1.24v6.36c0 5.1-5.56 8.4-10 6.15-2.8-1.42-4.24-4.66-3.4-7.63.9-3.2 4.24-5.13 7.4-4.4v3.16c-.36-.12-.76-.19-1.18-.19-1.66 0-3 1.34-3 3s1.34 3 3 3c1.7 0 3.15-1.4 3.15-3.1V3h3.03z"/></svg>
       </a>
     </div>
@@ -532,10 +592,12 @@
     <div>
       <h4 class="text-cream font-display font-bold text-lg mb-4">Quick Links</h4>
       <ul class="space-y-2 text-sm">
-        <li><a href="#welcome" class="hover:text-gold transition-colors">About Us</a></li>
-        <li><a href="#pillars" class="hover:text-gold transition-colors">What We Believe</a></li>
-        <li><a href="#visit" class="hover:text-gold transition-colors">Plan a Visit</a></li>
+        <li><a href="about.html" class="hover:text-gold transition-colors">About Us</a></li>
+        <li><a href="index.html#pillars" class="hover:text-gold transition-colors">What We Believe</a></li>
+        <li><a href="index.html#visit" class="hover:text-gold transition-colors">Plan a Visit</a></li>
         <li><a href="store.html" class="hover:text-gold transition-colors">Bookstore</a></li>
+        <li><a href="giving.html" class="hover:text-gold transition-colors">Giving</a></li>
+        <li><a href="prayer.html" class="hover:text-gold transition-colors">Prayer Request</a></li>
       </ul>
     </div>
     <div>
@@ -554,33 +616,67 @@
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- Supabase client (for the bookstore preview) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
   // year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // ---------- Mobile drawer (slides in from the right) ----------
+  // ---------------- Header hide on scroll down / show on scroll up ----------------
+  const header = document.getElementById('siteHeader');
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const currentY = window.scrollY;
+        if (currentY > 40) header.classList.add('shadow-lg'); else header.classList.remove('shadow-lg');
+
+        if (currentY > lastScrollY && currentY > 120) {
+          header.classList.add('header-hide');   // scrolling down -> hide
+        } else {
+          header.classList.remove('header-hide'); // scrolling up -> show
+        }
+        lastScrollY = currentY;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // ---------------- Mobile menu (slide from right) ----------------
   const menuBtn = document.getElementById('menuBtn');
   const menuCloseBtn = document.getElementById('menuCloseBtn');
   const mobileMenu = document.getElementById('mobileMenu');
-  const menuOverlay = document.getElementById('menuOverlay');
+  const mobileOverlay = document.getElementById('mobileOverlay');
 
   function openMenu() {
-    mobileMenu.classList.remove('translate-x-full');
-    menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+    mobileMenu.classList.add('open');
+    mobileOverlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
   function closeMenu() {
-    mobileMenu.classList.add('translate-x-full');
-    menuOverlay.classList.add('opacity-0', 'pointer-events-none');
+    mobileMenu.classList.remove('open');
+    mobileOverlay.classList.remove('open');
     document.body.style.overflow = '';
   }
   menuBtn.addEventListener('click', openMenu);
   menuCloseBtn.addEventListener('click', closeMenu);
-  menuOverlay.addEventListener('click', closeMenu);
+  mobileOverlay.addEventListener('click', closeMenu);
   document.querySelectorAll('.mobile-link').forEach(el => el.addEventListener('click', closeMenu));
 
-  // ---------- Scroll reveal ----------
+  // mobile "Ministries" accordion
+  const ministriesToggle = document.getElementById('ministriesToggle');
+  const ministriesPanel = document.getElementById('ministriesPanel');
+  const ministriesChevron = document.getElementById('ministriesChevron');
+  let ministriesOpen = false;
+  ministriesToggle.addEventListener('click', () => {
+    ministriesOpen = !ministriesOpen;
+    ministriesPanel.style.maxHeight = ministriesOpen ? ministriesPanel.scrollHeight + 'px' : '0px';
+    ministriesChevron.style.transform = ministriesOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+  });
+
+  // ---------------- Scroll reveal ----------------
   const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -592,59 +688,52 @@
   }, { threshold: 0.15 });
   revealEls.forEach(el => io.observe(el));
 
-  // ---------- Header: hides on scroll down, reveals on scroll up ----------
-  const header = document.getElementById('siteHeader');
-  let lastScrollY = window.scrollY;
-  window.addEventListener('scroll', () => {
-    const currentY = window.scrollY;
-    if (currentY > 40) header.classList.add('shadow-lg'); else header.classList.remove('shadow-lg');
-
-    if (currentY > lastScrollY && currentY > 120) {
-      header.style.transform = 'translateY(-100%)'; // scrolling down -> hide
-    } else {
-      header.style.transform = 'translateY(0)'; // scrolling up -> reveal
-    }
-    lastScrollY = currentY;
-  }, { passive: true });
-
-  // ---------- Supabase: load first 4 products into the "Grow Your Faith" preview ----------
+  // ---------------- Bookstore preview: load first 4 products from Supabase ----------------
   const SUPABASE_URL = 'https://tundyoqfaymahsjjpjfq.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR1bmR5b3FmYXltYWhzampwamZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMyOTg3MzMsImV4cCI6MjA5ODg3NDczM30.VOPhAE3OWVNk__NU4KM9ZYu2-Cvqu7J0BZLWa-odKy0';
+  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-  async function loadStorePreview() {
+  function bookCardHTML(p) {
+    const img = p.image_url
+      ? `<img src="${p.image_url}" alt="${p.name}" class="w-full h-44 object-cover">`
+      : `<div class="h-44 bg-gradient-to-br from-navy-light to-navy flex items-center justify-center">
+           <svg class="w-12 h-12 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+         </div>`;
+    const price = Number(p.price || 0).toLocaleString('sv-SE');
+    return `
+      <a href="store.html" class="book-card bg-white rounded-xl overflow-hidden shadow-md block">
+        ${img}
+        <div class="p-4">
+          <p class="font-display font-bold text-navy">${p.name}</p>
+          <p class="text-navy/50 text-xs mt-1">${p.category || 'Bookstore'} • ${price} kr</p>
+        </div>
+      </a>`;
+  }
+
+  async function loadBookstorePreview() {
+    const grid = document.getElementById('bookGrid');
     try {
-      const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-      const { data, error } = await client
+      const { data, error } = await sb
         .from('products')
-        .select('id, title, author, price, currency, image_url, slug')
-        .eq('is_published', true)
+        .select('*')
+        .eq('in_stock', true)
         .order('sort_order', { ascending: true })
-        .order('created_at', { ascending: false })
         .limit(4);
 
-      if (error || !data || data.length === 0) return; // keep the static fallback cards
+      if (error) throw error;
 
-      const grid = document.getElementById('storeGrid');
-      grid.innerHTML = data.map(p => `
-        <a href="store.html#${p.slug || p.id}" class="book-card bg-white border border-navy/10 rounded-xl overflow-hidden shadow-md block">
-          <div class="h-44 bg-gradient-to-br from-navy-light to-navy flex items-center justify-center overflow-hidden">
-            ${p.image_url
-              ? `<img src="${p.image_url}" alt="${p.title}" class="w-full h-full object-cover">`
-              : `<svg class="w-12 h-12 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>`
-            }
-          </div>
-          <div class="p-4">
-            <p class="font-display font-bold text-navy truncate">${p.title}</p>
-            <p class="text-navy/50 text-xs mt-1">${p.author ? p.author + ' • ' : ''}${Number(p.price).toFixed(0)} ${p.currency || 'SEK'}</p>
-          </div>
-        </a>
-      `).join('');
-    } catch (e) {
-      // network/CDN issue: silently keep the static fallback cards
-      console.warn('Store preview: could not load products, showing fallback.', e);
+      if (!data || data.length === 0) {
+        grid.innerHTML = `<p class="col-span-full text-center text-navy/50 text-sm py-8">New titles are on the way — check back soon.</p>`;
+        return;
+      }
+      grid.innerHTML = data.map(bookCardHTML).join('');
+      grid.classList.add('in'); // trigger reveal since content replaced after observer may have already fired
+    } catch (err) {
+      console.error('Could not load products:', err);
+      grid.innerHTML = `<p class="col-span-full text-center text-navy/50 text-sm py-8">New titles are on the way — check back soon.</p>`;
     }
   }
-  loadStorePreview();
+  loadBookstorePreview();
 </script>
 </body>
 </html>
